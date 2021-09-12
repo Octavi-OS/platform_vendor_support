@@ -68,6 +68,7 @@ public class ColorPickerPreference extends Preference implements
     private boolean mDividerAbove;
     private boolean mDividerBelow;
     private EditText mEditText;
+    private boolean miconSpaceReserved;
 
     private final Context mContext;
 
@@ -75,14 +76,17 @@ public class ColorPickerPreference extends Preference implements
 
     public ColorPickerPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         this(context, attrs, defStyleAttr, 0);
+        setIconSpaceReserved(false);
     }
 
     public ColorPickerPreference(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+        setIconSpaceReserved(false);
     }
 
     public ColorPickerPreference(Context context) {
         this(context, null);
+        setIconSpaceReserved(false);
     }
 
     public ColorPickerPreference(Context context, AttributeSet attrs, int defStyleAttr,
@@ -90,8 +94,8 @@ public class ColorPickerPreference extends Preference implements
         super(context, attrs, defStyleAttr, defStyleRes);
         setLayoutResource(R.layout.preference_material_settings);
         init(context, attrs);
-
         mContext = context;
+        setIconSpaceReserved(false);
     }
 
     @Override
@@ -123,6 +127,7 @@ public class ColorPickerPreference extends Preference implements
             mShowPreview = attrs.getAttributeBooleanValue(SETTINGS_NS, "showPreview", true);
             mDividerAbove = attrs.getAttributeBooleanValue(SETTINGS_NS, "dividerAbove", false);
             mDividerBelow = attrs.getAttributeBooleanValue(SETTINGS_NS, "dividerBelow", false);
+            miconSpaceReserved = attrs.getAttributeBooleanValue(SETTINGS_NS, "iconSpaceReserved", false);
         }
     }
 
